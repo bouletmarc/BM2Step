@@ -3,8 +3,8 @@ Arduino based 2Step Launch Control Module similar to Bee*R for Honda/Acura
 
 # Compatibility
 
--All Honda/Acura engines that are 4cylinder and running with a distributor (mainly SerieB, D, F and H engines).
--It does works on Automatics cars.
+- All Honda/Acura engines that are 4cylinder and running with a distributor (mainly SerieB, D, F and H engines).
+- It does works on Automatics cars.
 
 # Parts List
 - 1x Arduino Nano V3 5V 16mhz atmega328p
