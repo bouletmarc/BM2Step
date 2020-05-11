@@ -25,6 +25,8 @@ Outputs wires:
 4. Bring the engine RPM to the desired Launch Control 2Step RPM
 5. Enjoy!
 
+![alt tag](https://github.com/bouletmarc/BM2Step/blob/master/Schematic/eagle_2020-05-11_03-45-24.png)
+
 # How the BM2Step works
 
 The BM2Step works by disabling the ICM ouputs when the BM2Step are active and the engine rpm reach the Set RPM. The diagram have 2x 2n4401 transistors to control the direction of the ICM outputs. One transistor are sending the ICM signal back to the distributor (sending to the ICM ouputs on the BM2Step) while the other transistor are sending the ICM signal in a 'built-in distributor simulator'.
