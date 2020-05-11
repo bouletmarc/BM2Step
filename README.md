@@ -6,6 +6,18 @@ Arduino based 2Step Launch Control Module similar to Bee*R for Honda/Acura
 -All Honda/Acura engines that are 4cylinder and running with a distributor (mainly SerieB, D, F and H engines).
 -It does works on Automatics cars.
 
+# Parts List
+- 1x Arduino Nano V3 5V 16mhz atmega328p
+- 1x 74HC00 Quad 2-input NAND gate (or 74LVC1G00 for a Single gate rather than a Quad gate)
+- 2x 2N4401 transistors
+- 6x 1K Ohms transistors
+- 1x 1 to 10 Ohm transistors (can be replaced with a jumper or '0ohm' directly but a resistor make the circuit safer!)
+- 2x B10K Potentiometer 0931
+- 2x 2mm to 5mm Leds
+- 1x 7805/78M05 5v voltage regulator
+- 1x 100nF capacitor (104)
+- 1x Diode (minimum of 20v), can be 1N4002, 1N4004, 1N4148, etc..
+
 # Installation
 
 Inputs wires:
@@ -13,9 +25,13 @@ Inputs wires:
 - Potentiometer - Launch RPM selection
 - Potentiometer - Cut RPM selection
 - Activate Launch/2Step (sort to ground to activate)
+- 12v Ignition On
+- Ground
 
 Outputs wires:
 - ICM - Ignition Control Module singal Out for the distributor
+
+**You don't need to power the arduino from the USB, the 7805/78M05 5v regulator output 5v from the 12v Ignition input wire to power the arduino when the Car ignition key are turned On!**
 
 # How to use the BM2Step
 
