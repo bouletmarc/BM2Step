@@ -2,6 +2,7 @@
 #define outputRPM 3
 #define potPinDelay A0
 #define potPinRPM1 A1
+#define Activate 6
 
 const int refreshRate = 10;
 
@@ -13,6 +14,7 @@ unsigned long rpm = 0;
 unsigned long lastmillis = 0;
 unsigned long lastmillisCutting = 0;
 bool CuttingLimiter = false;
+bool CanLaunch = false;
 
 
 int SmoothSize = 50;
@@ -23,12 +25,19 @@ int CurrentSmooth = 0;
 void setup() {
   Serial.begin(115200);
    
+  pinMode(Activate, INPUT);
   pinMode(rpmPin, INPUT);
   pinMode(outputRPM, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(rpmPin), rpm_engine, FALLING);
 }
 
 void loop() {
+  if (digitalRead(Activate) == LOW) {
+    CanLaunch = true;
+  }
+  else {
+    CanLaunch = false;
+  }
   int potDelayRead = analogRead(potPinDelay);
   int potRPM1Read = analogRead(potPinRPM1);
   cuttingDelay = map(potDelayRead, 0, 1023, 0, 500);
@@ -63,18 +72,23 @@ int CalcSmoothRPM() {
 
 void CalcCutting() {
   //Get Cutting
-  if (CalcSmoothRPM() >= cuttingRPM1) {
-    if (!CuttingLimiter) {
-      CuttingLimiter = true;
-      lastmillisCutting = millis();
+  if (CanLaunch) {
+    if (CalcSmoothRPM() >= cuttingRPM1) {
+      if (!CuttingLimiter) {
+        CuttingLimiter = true;
+        lastmillisCutting = millis();
+      }
+    }
+    else {
+      if (CuttingLimiter) {
+        if (millis() - lastmillisCutting >= cuttingDelay) {
+          CuttingLimiter = false;
+        }
+      }
     }
   }
   else {
-    if (CuttingLimiter) {
-      if (millis() - lastmillisCutting >= cuttingDelay) {
-        CuttingLimiter = false;
-      }
-    }
+    CuttingLimiter = false;
   }
 
   //Apply Cut
