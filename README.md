@@ -9,13 +9,13 @@ Arduino based 2Step Launch Control Module similar to Bee*R for Honda/Acura
 # Parts List
 - 1x Arduino Nano V3 5V 16mhz atmega328p
 - 1x 74HC00 Quad 2-input NAND gate (or 74LVC1G00 for a Single gate rather than a Quad gate)
-- 2x 2N4401 transistors
+- 2x 2N4401 transistors (2N2222/2N3904 can be used)
 - 6x 1K Ohms resistors
 - 1x 1 to 10 Ohm resistors (can be replaced with a jumper or '0ohm' directly but a resistor make the circuit safer!)
 - 2x B10K Potentiometer 0931
 - 2x 2mm to 5mm Leds
 - 1x 7805/78M05 5v voltage regulator
-- 1x 100nF capacitor (104)
+- 2x 100nF capacitor (104)
 - 1x Diode (minimum of 20v), can be 1N4002, 1N4004, 1N4148, etc..
 
 # Installation
